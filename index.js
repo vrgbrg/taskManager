@@ -6,8 +6,11 @@ const tasks = require('./controllers/tasks');
 const users = require('./controllers/users');
 const jwt = require('jsonwebtoken');
 const models = require('./models');
+const cors = require('cors');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   if (req.header('x-auth')) {
